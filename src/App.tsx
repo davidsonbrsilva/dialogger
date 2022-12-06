@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState, useRef } from 'react';
 
 import { debounce } from 'debounce';
 
-import './App.css';
+import './App.scss';
 
 import messages from './shared/messages';
 import placeholders from './shared/placeholders';
@@ -82,12 +82,12 @@ function App() {
   };
 
   return (
-    <main className="container">
-      <section className="question-area" onClick={() => inputRef.current?.focus()}>
-        <div className="question-wrapper">
+    <main className="app">
+      <section className="question" onClick={() => inputRef.current?.focus()}>
+        <div className="wrapper">
           <QuestionInput ref={inputRef} placeholder={placeholder} value={question} onChanged={handleQuestion} />
           {!question && (
-            <div className="floating-element">
+            <div className="controls">
               <button className="button" onClick={acceptSuggestion}>
                 Aceitar sugestão
               </button>
@@ -97,7 +97,7 @@ function App() {
             </div>
           )}
           {isQuestionAnswered && (
-            <div className="floating-element">
+            <div className="controls">
               <button className="button" onClick={doAnotherQuestion}>
                 Fazer outra pergunta
               </button>
@@ -108,8 +108,8 @@ function App() {
           )}
         </div>
       </section>
-      <section className="answer-area">
-        <p className="answer">{answer}</p>
+      <section className="answer">
+        <p className="content">{answer}</p>
       </section>
     </main>
   );
