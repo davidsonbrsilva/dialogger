@@ -25,7 +25,7 @@ function App() {
 
   useEffect(() => {
     setPlaceholder(getPlaceholder());
-    inputRef.current?.focus();
+    inputRef.current && (inputRef.current as HTMLDivElement).focus();
   }, []);
 
   const getPlaceholder = () => placeholders[Math.floor(Math.random() * placeholders.length)];
@@ -83,7 +83,7 @@ function App() {
 
   return (
     <main className="app">
-      <section className="question" onClick={() => inputRef.current?.focus()}>
+      <section className="question" onClick={() => inputRef.current && (inputRef.current as HTMLDivElement).focus()}>
         <div className="wrapper">
           <QuestionInput ref={inputRef} placeholder={placeholder} value={question} onChanged={handleQuestion} />
           {!question && (
