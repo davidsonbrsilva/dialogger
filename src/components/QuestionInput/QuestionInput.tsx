@@ -13,6 +13,11 @@ function QuestionInput({ placeholder, value, onChanged }: QuestionInputProps, re
     if (ref.current) {
       ref.current.innerText = value;
 
+      if (navigator.userAgent.match(/firefox|fxios/i)) {
+        ref.current.innerHTML = value;
+        ref.current.innerHTML = ref.current.innerHTML.trim();
+      }
+
       if (ref.current.innerText !== '') handleCursor();
     }
   }, [value]);
